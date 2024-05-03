@@ -3,11 +3,12 @@ import userReducer  from './user/userSlice';
 import {persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import persistStore from 'redux-persist/es/persistStore';
+import themeReducer from './theme/themeSlice';
 
 //combining reducers
 const rootReducer = combineReducers({
     user: userReducer,
-
+    theme: themeReducer,
 });
 
 //here redux-persist is used to save the state in persistent storage so that even after a refresh, the data will remain intact
