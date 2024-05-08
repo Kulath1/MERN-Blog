@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    height: 100vh;
+}
+
+/*The .ql-editor class is applied to the Quill editor's main editing area (also known as the "content" area), where you type and manipulate text.*/
+/*When you render the ReactQuill component, it will create an instance of Quill's rich text editor inside your React application.*/
+.ql-editor{
+    font-size: 1.05rem;
+}
