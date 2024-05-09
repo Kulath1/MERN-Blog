@@ -244,6 +244,7 @@ export default function DashProfile(){
                     {error}
                 </Alert>
             )}
+            {/* a modal popup window to confirm the deletion of user account */}
             <Modal show={showModal} onClose={()=>setShowModal(false)} popup size='md'>
                 <Modal.Header/>
                 <Modal.Body>
