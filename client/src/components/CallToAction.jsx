@@ -8,7 +8,7 @@ export default function CallToAction() {
       <div className='flex-1 justify-center flex flex-col'>
         <h2 className='text-2xl'>Want to know about sigma females?</h2>
         <p className='text-gray-300 my-2'>Read these articles</p>
-        <Button gradientDuoTone='purpleToPink' pill>
+        <Button gradientDuoTone='greenToBlue' pill>
             <a href='https://www.linkedin.com/pulse/sigma-woman-independent-mysterious-personality-jessica-brothers/'
             target='_blank'  rel='noopener noreferrer'>
                 Read now
