@@ -1,5 +1,5 @@
 import {Sidebar} from 'flowbite-react';
-import { HiArrowSmRight, HiDocumentText, HiOutlineUserGroup, HiUser} from 'react-icons/hi';
+import { HiAnnotation, HiArrowSmRight, HiDocumentText, HiOutlineUserGroup, HiUser} from 'react-icons/hi';
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from 'react-router-dom';
@@ -64,13 +64,21 @@ export default function DashSidebar(){
                         </Link>
                         )}
 
-                    {/*Users*/}
                     {currentUser.isAdmin && ( 
+                        <>
+                        {/*Users*/}
                         <Link to='/dashboard?tab=users'>
                         <Sidebar.Item active={tab==='users'} icon={HiOutlineUserGroup} as='div'>
                             Users
                         </Sidebar.Item>
                         </Link>
+                        {/*comments*/}
+                        <Link to='/dashboard?tab=comments'>
+                        <Sidebar.Item active={tab==='comments'} icon={HiAnnotation} as='div'>
+                            Comments
+                        </Sidebar.Item>
+                        </Link>
+                        </>
                         )}
                     
                     {/*Sign Out*/}
