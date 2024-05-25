@@ -10,7 +10,7 @@ export default function FooterCom(){
                     <div>
                     <Link to="/" className='self-center whitespace-nowrap text-lg sm:text-xl font-semibold dark:text-white'>
                         <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'>
-                            Sahand's</span>
+                            Nipuni's</span>
                             Blog
                      </Link>
                     </div>
@@ -31,7 +31,7 @@ export default function FooterCom(){
                                 target='_blank'//open a new tab
                                 rel='noopener noreferer' //prevent the blockage of the new tab
                                 >
-                                Sahand's Blog
+                                Nipuni's Blog
                             </Footer.Link>
                         </Footer.LinkGroup>
                         </div>

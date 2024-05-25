@@ -1,5 +1,5 @@
 import {Sidebar} from 'flowbite-react';
-import { HiAnnotation, HiArrowSmRight, HiChartPie, HiDocumentText, HiOutlineUserGroup, HiUser} from 'react-icons/hi';
+import { HiAnnotation, HiArrowSmRight, HiChartPie, HiDocumentText, HiOutlineUserGroup, HiUser, HiNewspaper} from 'react-icons/hi';
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from 'react-router-dom';
@@ -93,6 +93,15 @@ export default function DashSidebar(){
                         </Sidebar.Item>
                         </Link>
                         </>
+                        )}
+
+                    {/*Ads*/}
+                    {currentUser.isAdmin && ( 
+                        <Link to='/dashboard?tab=ads'>
+                        <Sidebar.Item active={tab==='ads'} icon={HiNewspaper} as='div'>
+                            Ads
+                        </Sidebar.Item>
+                        </Link>
                         )}
                     
                     {/*Sign Out*/}

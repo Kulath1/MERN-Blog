@@ -7,14 +7,15 @@ import {CircularProgressbar} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import {app} from '../firebase'
 import { useNavigate } from "react-router-dom";
+import { useAds } from '../AdProvider.jsx';
 
-
-export default function CreatePost(){
+export default function CreateAd(){
     const [file, setFile] = useState(null);
     const [imageUploadProgress, setImageUploadProgress] = useState(null);
     const [imageUploadError, setImageUploadError] = useState(null);
     const [formData, setFormData] = useState({});
     const [publishError, setPublishError] = useState(null);
+    const { addAd } = useAds(); // Use the custom hook to access ad context
     const navigate = useNavigate();
     const handleUploadImage =async () => {
         try{
@@ -57,7 +58,11 @@ export default function CreatePost(){
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch('/api/post/create', {
+            setFormData({...formData, 
+                startDate: new Date(formData.startDate).toISOString(),
+                endDate: new Date(formData.endDate).toISOString(),
+            })
+            const res = await fetch('/api/ad/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -71,7 +76,8 @@ export default function CreatePost(){
             }
             if(res.ok){
                 setPublishError(null);
-                navigate(`/post/${data.slug}`)
+                addAd(data);
+                navigate(`/dashboard?tab=ads`)
             }
             
         }catch(error){
@@ -81,7 +87,7 @@ export default function CreatePost(){
     return (
         <div className="p-3 max-w-3xl mx-auto min-h-screen"> 
             <h1 className="text-center text-3xl my-7 font-semibold"> 
-                Create a post 
+                Create an ad 
             </h1>
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                 <div className="flex flex-col gap-4 sm:flex-row justify-between">
@@ -94,9 +100,9 @@ export default function CreatePost(){
                     />
                    <Select onChange={(e) => setFormData({...formData, category: e.target.value})}>
                         <option value='uncategorized'>Select a category</option>
-                        <option value='casual dresses'>Casual dresses</option>
-                        <option value='accessories'>Accessories</option>
-                        <option value='foot wear'>Foot wear</option>
+                        <option value='casual dresses'>Travelling</option>
+                        <option value='accessories'>Entertainment</option>
+                        <option value='foot wear'>Educational</option>
                    </Select>
                 </div>
                 <div className="flex gap-4 items-center justify-between border-4 border-teal-400 border-dotted p-3">
@@ -128,19 +134,41 @@ export default function CreatePost(){
                     />
 
                 )}
-                <ReactQuill 
+
+               <ReactQuill 
                     theme="snow" 
                     placeholder="Write something..." 
                     className="h-72 mb-12" 
                     required
                     onChange={(value) => setFormData({...formData, content: value})}/>
+                 
+                <div className="flex flex-col gap-4 sm:flex-row justify-between">
+                   <TextInput 
+                        typeof="date" 
+                        placeholder="start Date" 
+                        required id="startDate"
+                        className="flex-1"
+                        onChange={(e) => setFormData({...formData, startDate: e.target.value})}
+                    />
+                    <TextInput 
+                        typeof="date" 
+                        placeholder="end Date" 
+                        required id="endDate"
+                        className="flex-1"
+                        onChange={(e) => setFormData({...formData, endDate: e.target.value})}
+                    />
+                   
+                </div>
+                
                 <Button type="submit" gradientDuoTone="greenToBlue">
-                    Publish
+                    Post
                 </Button>
+
                 {publishError && 
                     <Alert className = 'mt-5' color='failure'>
                         {publishError}
                     </Alert>}
+
             </form>
         </div>
     )
