@@ -1,19 +1,63 @@
 import { Avatar, Button, Dropdown, Navbar, TextInput} from 'flowbite-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {AiOutlineSearch} from 'react-icons/ai';
 import { FaMoon, FaSun} from 'react-icons/fa';
 import {useSelector, useDispatch} from 'react-redux';
 import { toggleTheme } from '../redux/theme/themeSlice';
-
+import { signOutSuccess } from '../redux/user/userSlice';
+import { useEffect, useState } from 'react';
 
 export default function Header() {
   
   const path = useLocation().pathname;
+  const location = useLocation();
   const {currentUser} = useSelector(state => state.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   //a function to know which theme is currently used
   const { theme } = useSelector((state) => state.theme);
+
+  const [searchTerm, setSearchTerm] = useState('');
+
+  //call this everytime we have a change in the location
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const searchTermFromUrl = urlParams.get('searchTerm');
+    if(searchTermFromUrl){
+      setSearchTerm(searchTermFromUrl);
+    }
+
+  }, [location.search])
+
+  // function to sign out the user when he clicks the 'sign out' in the header
+  const handleSignOut = async () => {
+    try{
+        const res = await fetch('/api/user/signout', {
+            method: 'POST',
+        })
+        const data = await res.json();
+        if(!res.ok){
+            console.log(data.message);
+        }else{
+            dispatch(signOutSuccess());
+        }
+    }catch(error){
+        console.log(error.message);
+
+    }
+}
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // change the result when the search input changes
+    const urlParams = new URLSearchParams(location.search);
+    urlParams.set('searchTerm', searchTerm);
+    const searchQuery = urlParams.toString();
+    navigate(`/search?${searchQuery}`);
+    
+  }
 
   return (
     <Navbar className='border-b-2'>
@@ -25,15 +69,15 @@ export default function Header() {
         Blog
 
       </Link>
-      <form >
-        
+      <form onSubmit={handleSubmit}>
         {/*create the search bar */}
         <TextInput
           typeof='text'
           placeholder='Search...'
           rightIcon={AiOutlineSearch}
           className='hidden lg:inline'
-
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
         </form> 
         <Button className='w-12 h-10 lg:hidden' color='gray' pill>
@@ -62,7 +106,7 @@ export default function Header() {
                 <Dropdown.Item>Profile</Dropdown.Item>
               </Link>
               <Dropdown.Divider/> {/* add a line */}
-              <Dropdown.Item>Sign Out</Dropdown.Item>
+              <Dropdown.Item onClick={handleSignOut}>Sign Out</Dropdown.Item>
 
 
             </Dropdown>
