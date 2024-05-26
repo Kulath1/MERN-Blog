@@ -4,28 +4,30 @@ export default function About() {
       <div className='max-w-2xl mx-auto p-3 text-center'>
         <div>
           <h1 className='text-3xl font font-semibold text-center my-7'>
-            About Sahand' Blog
+            About Nipuni' Blog
           </h1>
           <div className='text-md text-gray-500 flex flex-col gap-6'>
             <p>
-              Welcome to Sahand's Blog! This blog was created by Sahand Ghavidel
-              as a personal project to share his thoughts and ideas with the
-              world. Sahand is a passionate developer who loves to write about
-              technology, coding, and everything in between.
+            Welcome to our blog, where style meets substance! 
+            In a world where trends are ever-evolving and personal expression 
+            through clothing is paramount, our blog serves as your ultimate guide
+             to navigating the vibrant and dynamic world of fashion. 
             </p>
 
             <p>
-              On this blog, you'll find weekly articles and tutorials on topics
-              such as web development, software engineering, and programming
-              languages. Sahand is always learning and exploring new
-              technologies, so be sure to check back often for new content!
+            Whether you're a trendsetter, a classic enthusiast, or just 
+            looking to refine your wardrobe,
+              we've got you covered. From the latest runway reviews to timeless style tips, 
+              sustainable fashion insights to the stories behind iconic designs, our mission 
+              is to inspire, educate, and celebrate the art of dressing well. 
             </p>
 
             <p>
-              We encourage you to leave comments on our posts and engage with
-              other readers. You can like other people's comments and reply to
-              them as well. We believe that a community of learners can help
-              each other grow and improve.
+            Join us as we explore the beauty and creativity that define the fashion universe, 
+              one stylish step at a time.
+
+
+
             </p>
           </div>
         </div>

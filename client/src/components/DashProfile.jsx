@@ -223,6 +223,20 @@ export default function DashProfile(){
                     </Link>
                     
                 )}
+
+                {/*if the user is the admin add 'create an ad' button and link it */}
+                {currentUser.isAdmin && (
+                    <Link to={'/create-ad'}>
+                    <Button 
+                        type='button' 
+                        gradientDuoTone='pinkToOrange' 
+                        className='w-full'> 
+                        Create an ad
+                    </Button>
+                    </Link>
+                    
+                )}
+            
             </form>
             <div className='text-red-500 flex justify-between mt-5'>
                 <span onClick={()=> setShowModal(true)} className='cursor-pointer'>Delete Account</span>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
 import CallToAction from '../components/CallToAction'
 import PostCard from '../components/PostCard'
-
+import Ads from '../components/Ad'
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -25,7 +25,7 @@ export default function Home() {
           Welcome to my Blog
         </h1>
         <p className='text-gray-400 text-x sm:text-sm'>
-          Here you'll find a variety of articles on woman empowerment and personal growth
+          Here you'll find a variety of articles on latest fashion trends.
         </p>
 
         {/* viwe all posts */}
@@ -59,6 +59,8 @@ export default function Home() {
          
         )}
       </div>
+
+      
 
       
     </div>

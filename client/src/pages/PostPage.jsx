@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom"
 import CallToAction from "../components/CallToAction";
 import CommentSection from "../components/CommentSection";
 import PostCard from "../components/PostCard";
+import Ad from "../components/Ad";
 
 export default function PostPage() {
     const {postSlug} = useParams();
@@ -97,6 +98,11 @@ export default function PostPage() {
         {/* call to action */}
         <div className="max-w-4xl mx-auto w-full">
             <CallToAction/>
+        </div>
+        
+        {/* ads */}
+        <div className="max-w-4xl mx-auto w-full">
+            <Ad />
         </div>
 
         {/* comment section */}
