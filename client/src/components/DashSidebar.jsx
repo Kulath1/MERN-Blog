@@ -95,14 +95,18 @@ export default function DashSidebar(){
                         </>
                         )}
 
-                    {/*Ads*/}
-                    {currentUser.isAdmin && ( 
-                        <Link to='/dashboard?tab=ads'>
-                        <Sidebar.Item active={tab==='ads'} icon={HiNewspaper} as='div'>
-                            Ads
-                        </Sidebar.Item>
+                    {currentUser.isAdmin && (
+                        <Link to="/dashboard?tab=ads">
+                            <Sidebar.Item
+                                active={tab === "ads"}
+                                icon={HiNewspaper}
+                                as="div"
+                            >
+                            Advertisements
+                            </Sidebar.Item>
                         </Link>
-                        )}
+                    )}        
+
                     
                     {/*Sign Out*/}
                     <Sidebar.Item onClick={handleSignOut} icon={HiArrowSmRight} className='cursor-pointer'>

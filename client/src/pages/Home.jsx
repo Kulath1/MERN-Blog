@@ -60,10 +60,7 @@ export default function Home() {
         )}
       </div>
 
-      {/* display ads */}
-      <div className='p-3 bg-amber-100 dark:bg-slate-700'>
-        <Ads/>
-      </div>
+      
 
       
     </div>

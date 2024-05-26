@@ -16,12 +16,9 @@ import ScrollToTop from './components/ScrollToTop'
 import Search from './pages/Search'
 import CreateAd from './pages/CreateAd'
 import UpdateAd from './pages/UpdateAd'
-import { AdProvider } from './AdProvider'
 
-  
 export default function App() {
-  return (
-    <AdProvider>
+return (
     <BrowserRouter>
     <ScrollToTop/>
       <Header />
@@ -45,6 +42,5 @@ export default function App() {
       </Routes>
       <FooterCom />
     </BrowserRouter>
-    </AdProvider>
-  )
+)
 }

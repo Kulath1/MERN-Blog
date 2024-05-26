@@ -1,42 +1,47 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const adSchema = new mongoose.Schema(
-    {
-        title: {
-            type: String,
-            required: true,
-            unique: true,
-        },
-        image: {
-            type: String,
-            default: "https://marketingepic.com/wp-content/uploads/2017/02/Graphic_Of_Billboard_With_Word_Ad.webp"
-        },
-        category: {
-            type: String,
-            default: 'uncategorized',
-        },
-        viewCount: {
-            type: Number,
-            default: 0,
-        },
-        startDate: {
-            type: Date,
-            required: true
-        },
-        endDate: {
-            type: Date,
-            required: true
-        },
-        isDisplayed: {
-            type: Boolean,
-            required: true
-        },
-        directedURL: {
-            type: String,
-            required: true
-        },
-    }, {timestamps: true}
-)
+   {
+    title: {
+         type: String,
+         required: true,
+         unique: true,
+    },
+    content: {
+         type: String,
+         default: 'This advertisement has no content',
+    },
+    image: {
+         type: String,
+         default: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVryDIlmAOkbzWfrhhYaYtM9CoWXBIC9BZwaIAdQgY9g&s',
+    },
+    category: {
+         type: String,
+         default: 'general'
+    },
+    targetURL: {
+         type: String,
+         required: true,
+    },
+    viewCount: {
+         type: Number,
+         default: 0,
+    },
+    startDate: {
+         type: Date,
+         required: true,
+    },
+    endDate: {
+         type: Date,
+         required: true,
+    },
+    isActive: {
+         type: Boolean,
+         default: true,
+    },
+   },
+   { timestamps: true }
+);
 
 const Ad = mongoose.model('Ad', adSchema);
 
