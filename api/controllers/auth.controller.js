@@ -74,7 +74,7 @@ export const google = async (req, res, next) => {
     
     try{
         //check if the user exists
-        const user = await User.findOne({name});
+        const user = await User.findOne({email});
 
         if(user){
             //create a token
